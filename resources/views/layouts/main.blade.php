@@ -10,22 +10,26 @@
 
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <header class="bg-gray-800 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h1 class="text-2xl md:text-3xl font-bold">Data Collection Project</h1>
-                </div>
-                <nav>
-                    <ul class="flex space-x-4">
-                        <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-300 transition">About</a></li>
-                        <li><a href="#" class="hover:text-blue-300 transition">Contact</a></li>
-                    </ul>
-                </nav>
+<header class="bg-gray-800 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-2">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="{{ route('welcome') }}" class="flex items-center">
+                <img src="{{ asset('/image/courtOfArm1.png') }}" class="h-16 w-16 mr-3" />
+
+                </a>
+                <h1 class="text-2xl md:text-xl  uppercase font-bold">Data Collection </h1>
             </div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <!-- <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li> -->
+                    <li><a href="{{ route('about.us') }}" class="hover:text-blue-300 transition">About</a></li>
+                    <li><a href="{{ route('contact') }}" class="hover:text-blue-300 transition">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="container mx-auto px-4 py-12">
 
@@ -40,9 +44,9 @@
                     <p>&copy; {{ date('Y') }} Data Collection Project. All rights reserved.</p>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="#" class="hover:text-blue-300 transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-blue-300 transition">Terms of Service</a>
-                    <a href="#" class="hover:text-blue-300 transition">Contact</a>
+                    <a href="{{ route('privacy') }}" class="hover:text-blue-300 transition">Privacy Policy</a>
+                    <a href="{{ route('terms.conditions') }}" class="hover:text-blue-300 transition">Terms of Service</a>
+                    <a href="{{ route('contact') }}" class="hover:text-blue-300 transition">Contact</a>
                 </div>
             </div>
         </div>

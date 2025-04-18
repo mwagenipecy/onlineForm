@@ -76,8 +76,31 @@ Route::get('/supplementary/collection', function () {
 
 Route::view('/form/thank-you', 'pages.complete-page')->name('form.thankyou');
 
-
-
 Route::get('/webmail', function () {
     return redirect()->away('https://server22.tanzaniaservers.com/roundcube/?_task=mail&_mbox=INBOX');
 });
+
+Route::get('about-us',function(){
+    return view('pages.about-us');
+
+})->name('about.us');
+
+
+
+Route::get('privacy',function(){
+    return view('pages.privacy');
+
+})->name('privacy');
+
+
+
+Route::get('terms',function(){
+    return view('pages.terms');
+
+})->name('terms.conditions');
+
+
+Route::get('contact',function(){
+    return view('pages.contact');
+
+})->name('contact');
