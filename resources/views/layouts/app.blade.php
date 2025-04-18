@@ -43,7 +43,7 @@
     <div class="flex-1 flex flex-col overflow-hidden">
 
         <!-- Navbar -->
-        <header class="flex justify-between items-center bg-white shadow px-6 py-4">
+        <header class="flex justify-between border-b border-1 shadow-lg items-center bg-white shadow px-6 py-4">
             <button @click="sidebarOpen = !sidebarOpen" class="md:hidden text-gray-600 focus:outline-none">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -51,7 +51,10 @@
                 </svg>
             </button>
 
-            <div></div> <!-- placeholder center -->
+            <div class="color-blue-800 font-bold uppercase strong">
+                ONLINE FORM 
+
+            </div> <!-- placeholder center -->
 
             <!-- User Icon -->
             <!-- User Icon with Dropdown -->
