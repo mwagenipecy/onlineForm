@@ -1,8 +1,10 @@
 <x-guest-layout>
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+       
+  <div class="flex justify-center items-center"> 
+    <h1 class="text-blue-600 uppercase text-3xl font-bold tracking-wide">Online Form</h1>
+
+    </div>
 
         <x-validation-errors class="mb-4" />
 
