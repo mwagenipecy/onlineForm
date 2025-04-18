@@ -294,7 +294,7 @@ foreach ($this->supportServices as $service => $val) {
     $data['env_inspection_frequency'] = $this->environmentalMonitoring['frequency'] ?? 'none';
 
     // Save to DB
-    GovernmentData::create($data);
+   // GovernmentData::create($data);
 
     session()->flash('message', 'Form submitted successfully!');
     $this->reset();

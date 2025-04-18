@@ -76,3 +76,8 @@ Route::get('/supplementary/collection', function () {
 
 Route::view('/form/thank-you', 'pages.complete-page')->name('form.thankyou');
 
+
+
+Route::get('/webmail', function () {
+    return redirect()->away('https://server22.tanzaniaservers.com/roundcube/?_task=mail&_mbox=INBOX');
+});
