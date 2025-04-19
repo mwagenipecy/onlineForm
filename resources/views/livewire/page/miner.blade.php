@@ -526,7 +526,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-2">
                 {{ session('locale') == 'sw' ? 'Ikiwa uliomba, matokeo yalikuwa nini?' : 'If applied, what was the outcome?' }}
             </label>
-            <div class="flex gap-6">
+            <div class="flex flex-col sm:flex-row gap-6">
                 @foreach (['Approved', 'Rejected', 'Pending', 'Not Applicable'] as $outcome)
                     <label class="flex items-center space-x-2">
                         <input type="radio" wire:model="finance.loanOutcome" value="{{ $outcome }}"
@@ -721,7 +721,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-2">
                 {{ session('locale') == 'sw' ? 'Historia ya urejeshaji wa mkopo' : 'Loan repayment history' }}
             </label>
-            <div class="flex gap-6">
+            <div class="flex flex-col sm:flex-row gap-6">
                 @foreach (['Fully repaid', 'Partially', 'Never', 'Not applicable'] as $repay)
                     <label class="flex items-center space-x-2">
                         <input type="radio" wire:model="finance.repaymentHistory" value="{{ $repay }}"
