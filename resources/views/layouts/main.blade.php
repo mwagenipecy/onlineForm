@@ -106,7 +106,7 @@
             <span class="text-sm font-medium text-gray-700">
                 @if(session('locale') == 'sw') Taarifa za Ziada @else Supplementary Collection @endif
             </span>
-        @elseif(Request::is('government-data'))
+        @elseif(Request::is('government/data'))
             <span class="text-sm font-medium text-gray-700">
                 @if(session('locale') == 'sw') Taarifa za Serikali @else Government Data @endif
             </span>
