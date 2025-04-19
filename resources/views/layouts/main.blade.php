@@ -98,11 +98,11 @@
             <span class="text-sm font-medium text-gray-700">
                 @if(session('locale') == 'sw') Dashibodi @else Dashboard @endif
             </span>
-        @elseif(Request::is('miners-collection'))   
+        @elseif(Request::is('miners/collection'))   
             <span class="text-sm font-medium text-gray-700">
                 @if(session('locale') == 'sw') Ukusanyaji wa Wachimbaji @else Miners Collection @endif
             </span>
-        @elseif(Request::is('supplementary-collection'))
+        @elseif(Request::is('supplementary/collection'))
             <span class="text-sm font-medium text-gray-700">
                 @if(session('locale') == 'sw') Taarifa za Ziada @else Supplementary Collection @endif
             </span>
