@@ -25,8 +25,18 @@
                 <h1 class="text-2xl md:text-xl uppercase font-bold">Data Collection </h1>
             </div>
             <div class="flex items-center space-x-4">
-                <!-- Language Toggle Button -->
-                <div class="relative" x-data="{ open: false, language: '{{ app()->getLocale() }}' }">
+           
+                <!-- Navigation Menu -->
+                <nav>
+                    <ul class="flex space-x-4">
+                        <!-- <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li> -->
+                        <li><a href="{{ route('about.us') }}" class="hover:text-blue-300 transition">About</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-blue-300 transition">Contact</a></li>
+                    </ul>
+                </nav>
+
+                     <!-- Language Toggle Button -->
+                     <div class="relative" x-data="{ open: false, language: '{{ app()->getLocale() }}' }">
                     <button @click="open = !open" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-md transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -38,14 +48,8 @@
                         <a href="{{ route('locale.switch', 'sw') }}" @click="language = 'sw'; open = false" class="block px-4 py-2 hover:bg-gray-100">Swahili</a>
                     </div>
                 </div>
-                <!-- Navigation Menu -->
-                <nav>
-                    <ul class="flex space-x-4">
-                        <!-- <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li> -->
-                        <li><a href="{{ route('about.us') }}" class="hover:text-blue-300 transition">About</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-blue-300 transition">Contact</a></li>
-                    </ul>
-                </nav>
+
+                
             </div>
         </div>
     </div>
