@@ -28,11 +28,21 @@
            
                 <!-- Navigation Menu -->
                 <nav>
-                    <ul class="flex space-x-4">
-                        <!-- <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li> -->
-                        <li><a href="{{ route('about.us') }}" class="hover:text-blue-300 transition">About</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-blue-300 transition">Contact</a></li>
-                    </ul>
+                <ul class="flex space-x-4">
+                <!-- <li><a href="{{ route('welcome') }}" class="hover:text-blue-300 transition">Home</a></li> -->
+                <li>
+                    <a href="{{ route('about.us') }}" class="hover:text-blue-300 transition">
+                        {{ session('locale') == 'sw' ? 'Kuhusu' : 'About' }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('contact') }}" class="hover:text-blue-300 transition">
+                        {{ session('locale') == 'sw' ? 'Mawasiliano' : 'Contact' }}
+                    </a>
+                </li>
+            </ul>
+
+
                 </nav>
 
                      <!-- Language Toggle Button -->
