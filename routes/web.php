@@ -104,3 +104,11 @@ Route::get('contact',function(){
     return view('pages.contact');
 
 })->name('contact');
+
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale.switch');
+
