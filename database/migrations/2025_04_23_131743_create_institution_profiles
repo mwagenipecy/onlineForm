@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('institution_profiles', function (Blueprint $table) {
+        Schema::create('institution_profilesvv', function (Blueprint $table) {
             $table->id();
-            $table->string('institution_name');
-            $table->string('institution_type');
-            $table->date('registration_date')->nullable();
-            $table->string('head_office_location')->nullable();
-            $table->integer('total_employees')->nullable();
-            $table->decimal('total_loan_portfolio', 20, 2)->nullable();
-            $table->decimal('extractive_loan_amount', 20, 2)->nullable();
-            $table->decimal('extractive_loan_percentage', 5, 2)->nullable();
+          
             $table->timestamps();
         });
     }

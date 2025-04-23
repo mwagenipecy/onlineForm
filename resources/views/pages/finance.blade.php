@@ -2,6 +2,6 @@
 @section('main-section')
 
 
-<livewire:finance-form />
+<livewire:financial-institution-create />
 
 @endsection
