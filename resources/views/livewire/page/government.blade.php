@@ -414,7 +414,7 @@
                     'mobileMoneyAgents' => ['en' => 'Mobile Money Agents', 'sw' => 'Wakala wa Fedha za Simu'],
                     'governmentExtensionOfficers' => ['en' => 'Government Extension Officers', 'sw' => 'Maafisa Ugani wa Serikali'],
                     'environmentalInspectors' => ['en' => 'Environmental Inspectors', 'sw' => 'Wakaguzi wa Mazingira'],
-                    'legalAidServices' => ['en' => 'Legal Aid Services', 'sw' => 'Huduma za Msaada wa Kisheria'],
+                    'legalAidServices' => ['en' => 'Legal Support Services', 'sw' => 'Huduma za Msaada wa Kisheria'],
                     'geologicalSurveySupport' => ['en' => 'Geological Survey Support', 'sw' => 'Msaada wa Utafiti wa Jiolojia'],
                     'financialLiteracyPrograms' => ['en' => 'Financial Literacy Programs', 'sw' => 'Programu za Elimu ya Fedha'],
                 ];
@@ -489,7 +489,7 @@
         <div class="mb-8">
             <label class="block text-sm font-medium text-gray-700 mb-2">
                 @if(session('locale') == 'sw')
-                    Je, matawi ya FEMATA au vyama vya ushirika vinafanya kazi katika mikoa?
+                    Je, matawi ya Small Scale Miners Groups/Associations au vyama vya ushirika vinafanya kazi katika mikoa?
                 @else
                     Are FEMATA chapters or cooperatives active regionally?
                 @endif
