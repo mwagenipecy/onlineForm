@@ -66,6 +66,16 @@ return new class extends Migration
             $table->string('region_zone')->nullable();
             $table->string('interview_mode')->nullable();
 
+
+            // section I 
+            $table->text('platforms_used')->nullable();
+            $table->string('uses_mobile_tools')->nullable();
+            $table->text('miners_bank_opinion')->nullable();
+            $table->json('miner_fund_priorities')->nullable();
+            $table->string('miner_fund_priorities_other')->nullable();
+            $table->string('monthly_output')->nullable();
+
+
             
             $table->timestamps();
         });

@@ -218,60 +218,46 @@
 
             <tbody class="bg-white divide-y divide-gray-200">
                 <!-- Individual Small-Scale Miners -->
-                <tr>
-                    <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        @if(session('locale') == 'sw') Wachimbaji Binafsi Wadogo @else Individual Small-Scale Miners @endif
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" wire:model="stakeholders.individualMiners.count" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.individualMiners.licensed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.individualMiners.womenLed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.individualMiners.youthLed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.individualMiners.active" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" wire:model="stakeholders.individualMiners.wardCoverage" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="text" wire:model="stakeholders.individualMiners.dataSource" placeholder="@if(session('locale') == 'sw') mfano: rejesta, makadirio @else e.g. registry, estimate @endif" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                </tr>
+                @php
+                $stakeholderLabels = [
+                    'individualMiners' => ['en' => 'Individual Small-Scale Miners', 'sw' => 'Wachimbaji Binafsi Wadogo'],
+                    'miningCooperatives' => ['en' => 'Mining Cooperatives', 'sw' => 'Vyama vya Ushirika wa Madini'],
+                    'womenInMiningGroups' => ['en' => 'Women in Mining Groups', 'sw' => 'Vikundi vya Wanawake Wachimbaji'],
+                    'youthMiningAssociations' => ['en' => 'Youth Mining Associations', 'sw' => 'Vyama vya Vijana Wachimbaji'],
+                    'mineralDealers' => ['en' => 'Mineral Dealers', 'sw' => 'Wafanyabiashara wa Madini'],
+                    'equipmentSuppliers' => ['en' => 'Equipment Suppliers', 'sw' => 'Wasambazaji wa Vifaa'],
+                    'financialInstitutions' => ['en' => 'Financial Institutions', 'sw' => 'Taasis za Kifedha'],
+                    'ngosCsos' => ['en' => 'NGOs / CSOs', 'sw' => 'Asasi zisizo za Kiserikali'],
+                    'trainingInstitutions' => ['en' => 'Training Institutions', 'sw' => 'Taasis za Mafunzo'],
+                    'environmentalOfficers' => ['en' => 'Environmental Officers', 'sw' => 'Maafisa wa Mazingira'],
+                    'localBuyers' => ['en' => 'Local Buyers', 'sw' => 'Wanunuzi wa Ndani'],
+                    'other' => ['en' => 'Other', 'sw' => 'Nyingine'],
+                ];
+            @endphp
 
-                <!-- Mining Cooperatives -->
-                <tr>
-                    <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        @if(session('locale') == 'sw') Vyama vya Ushirika wa Madini @else Mining Cooperatives @endif
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" wire:model="stakeholders.miningCooperatives.count" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.miningCooperatives.licensed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.miningCooperatives.womenLed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.miningCooperatives.youthLed" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" min="0" max="100" wire:model="stakeholders.miningCooperatives.active" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="number" wire:model="stakeholders.miningCooperatives.wardCoverage" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap">
-                        <input type="text" wire:model="stakeholders.miningCooperatives.dataSource" placeholder="@if(session('locale') == 'sw') mfano: rejesta, makadirio @else e.g. registry, estimate @endif" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                    </td>
-                </tr>
+@foreach ($stakeholders as $key => $values)
+    <tr>
+        <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            {{ session('locale') == 'sw' ? $stakeholderLabels[$key]['sw'] : $stakeholderLabels[$key]['en'] }}
+        </td>
+        @foreach (['count', 'licensed', 'womenLed', 'youthLed', 'active', 'wardCoverage'] as $field)
+            <td class="px-3 py-4 whitespace-nowrap">
+                <input type="number" min="0" max="{{ in_array($field, ['licensed', 'womenLed', 'youthLed', 'active']) ? 100 : '' }}"
+                       wire:model="stakeholders.{{ $key }}.{{ $field }}"
+                       class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            </td>
+        @endforeach
+        <td class="px-3 py-4 whitespace-nowrap">
+            <input type="text" wire:model="stakeholders.{{ $key }}.dataSource"
+                   placeholder="{{ session('locale') == 'sw' ? 'mfano: rejesta, makadirio' : 'e.g. registry, estimate' }}"
+                   class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md">
+        </td>
+    </tr>
+@endforeach
+
+
+
+
             </tbody>
         </table>
     </div>
@@ -310,7 +296,7 @@
                 @endphp
                 @foreach ($minerals as $key => $label)
                     <div class="flex items-center">
-                        <input id="mineral{{ ucfirst($key) }}" wire:model="mineralsExtracted.{{ $key }}" type="checkbox"
+                        <input id="mineral{{ ucfirst($key) }}" wire:model.live="mineralsExtracted.{{ $key }}" type="checkbox"
                             class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
                         <label for="mineral{{ ucfirst($key) }}" class="ml-2 block text-sm text-gray-700">
                             {{ session('locale') == 'sw' ? $label['sw'] : $label['en'] }}
@@ -491,7 +477,7 @@
                 @if(session('locale') == 'sw')
                     Je, matawi ya Small Scale Miners Groups/Associations au vyama vya ushirika vinafanya kazi katika mikoa?
                 @else
-                    Are FEMATA chapters or cooperatives active regionally?
+                    Are Small Scale Miners Groups/Associations chapters or cooperatives active regionally?
                 @endif
             </label>
             <div class="flex flex-wrap space-x-6">
@@ -1016,6 +1002,109 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- SECTION I: POLICY AND INSTITUTIONAL FEEDBACK -->
+<div class="bg-white shadow overflow-hidden sm:rounded-lg max-w-full">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6 bg-blue-50">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+            @if(session('locale') == 'sw')
+                SEHEMU I: MAONI YA KISERA NA KITAASISI
+            @else
+                SECTION I: POLICY AND INSTITUTIONAL FEEDBACK
+            @endif
+        </h3>
+    </div>
+    <div class="px-4 py-5 sm:p-6 space-y-6">
+
+        <!-- Question 1 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                @if(session('locale') == 'sw')
+                    Je, ni msaada gani wa kisheria au udhibiti ungeboresha shughuli za wachimbaji wadogo?
+                @else
+                    What kind of legal or regulatory support would improve small-scale mining activities?
+                @endif
+            </label>
+            <textarea wire:model="policyFeedback.legalSupport" rows="3" class="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"></textarea>
+        </div>
+
+        <!-- Question 2 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                @if(session('locale') == 'sw')
+                    Kati ya huduma zifuatazo, zipi zingesaidia zaidi wachimbaji wadogo?
+                @else
+                    Which of the following support services would most empower small-scale miners?
+                @endif
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                @php
+                    $supportOptions = [
+                        'accessCredit' => 'Access to credit',
+                        'technicalTraining' => 'Technical training',
+                        'legalSupport' => 'Legal support',
+                        'marketLinkage' => 'Market linkage',
+                    ];
+                @endphp
+                @foreach($supportOptions as $key => $label)
+                    <div class="flex items-center">
+                        <input type="checkbox" id="{{ $key }}" wire:model="policyFeedback.supportServices.{{ $key }}" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded h-4 w-4">
+                        <label for="{{ $key }}" class="ml-2 block text-sm text-gray-700">{{ session('locale') == 'sw' ? __($label) : $label }}</label>
+                    </div>
+                @endforeach
+                <div>
+                    <input type="text" wire:model="policyFeedback.supportServices.other" placeholder="{{ session('locale') == 'sw' ? 'Taja nyingine' : 'Other (please specify)' }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                @if(session('locale') == 'sw')
+                    Kwa maoni yako, serikali inaweza kutumiaje mapato ya madini kusaidia jamii?
+                @else
+                    In your opinion, how can the government reinvest mineral revenues to support local communities?
+                @endif
+            </label>
+            <textarea wire:model="policyFeedback.reinvestmentIdeas" rows="3" class="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"></textarea>
+        </div>
+
+        <!-- Question 4 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                @if(session('locale') == 'sw')
+                    Je, unaamini sheria za sasa za madini zinafaa kwa wachimbaji wadogo?
+                @else
+                    Do you believe current mining laws are favorable to small-scale miners?
+                @endif
+            </label>
+            <div class="flex gap-6">
+                @foreach(['yes' => 'Yes', 'no' => 'No', 'unsure' => 'Not sure'] as $value => $label)
+                    <div class="flex items-center">
+                        <input type="radio" id="lawFavorable-{{ $value }}" value="{{ $value }}" wire:model="policyFeedback.lawFavorable" class="text-blue-600 focus:ring-blue-500 border-gray-300 h-4 w-4">
+                        <label for="lawFavorable-{{ $value }}" class="ml-2 text-sm text-gray-700">{{ session('locale') == 'sw' ? __($label) : $label }}</label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div x-show="policyFeedback.lawFavorable === 'no'">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                @if(session('locale') == 'sw')
+                    Ikiwa hapana, ni mabadiliko gani ungependekeza kwenye mfumo wa sheria za madini?
+                @else
+                    If no, what changes would you propose in the mining legal framework?
+                @endif
+            </label>
+            <textarea wire:model="policyFeedback.lawChanges" rows="3" class="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"></textarea>
+        </div>
+    </div>
+</div>
+
 
 
     

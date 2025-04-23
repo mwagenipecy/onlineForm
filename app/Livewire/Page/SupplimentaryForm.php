@@ -50,6 +50,17 @@ class SupplimentaryForm extends Component
     // SECTION H
     public $finalComments, $enumeratorName, $regionZone, $interviewMode;
 
+
+    // SECTION I
+public $platformsUsed;
+public $usesMobileTools;
+public $minersBankOpinion;
+public $minerFundPriorities = [];
+public $minerFundPrioritiesOther;
+public $monthlyOutput;
+
+
+
     public function submit()
     {
 
@@ -106,6 +117,15 @@ class SupplimentaryForm extends Component
             'enumeratorName' => 'nullable|string|max:255',
             'regionZone' => 'nullable|string|max:255',
             'interviewMode' => 'nullable|string',
+
+
+            // Section I
+            'platformsUsed' => 'nullable|string',
+            'usesMobileTools' => 'nullable|string',
+            'minersBankOpinion' => 'nullable|string',
+            'minerFundPriorities' => 'array',
+            'minerFundPrioritiesOther' => 'nullable|string',
+            'monthlyOutput' => 'nullable|string|max:255',
         ]);
 
         StakeholderSubmission::create([
@@ -160,6 +180,15 @@ class SupplimentaryForm extends Component
             'enumerator_name' => $this->enumeratorName,
             'region_zone' => $this->regionZone,
             'interview_mode' => $this->interviewMode,
+
+
+            // Section I
+            'platforms_used' => $this->platformsUsed,
+            'uses_mobile_tools' => $this->usesMobileTools,
+            'miners_bank_opinion' => $this->minersBankOpinion,
+            'miner_fund_priorities' => $this->minerFundPriorities,
+            'miner_fund_priorities_other' => $this->minerFundPrioritiesOther,
+            'monthly_output' => $this->monthlyOutput,
         ]);
 
         session()->flash('message', 'Form submitted successfully!');

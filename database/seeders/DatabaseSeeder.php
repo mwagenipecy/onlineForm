@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\GovernmentData;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +23,9 @@ class DatabaseSeeder extends Seeder
 
 
       //  $this->call(FinancialInstitutionSeeder::class);
-        $this->call(MinerProfileSeeder::class);
+      //  $this->call(MinerProfileSeeder::class);
+         //  $this->call(GovernmentDataSeeder::class);
+           $this->call(StakeholderSubmissionSeeder::class,);
 
     }
 }

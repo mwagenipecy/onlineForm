@@ -30,6 +30,14 @@ class StakeholderSubmission extends Model
 
         // Section H
         'final_comments', 'enumerator_name', 'region_zone', 'interview_mode',
+
+        // section I
+        'platforms_used',
+        'uses_mobile_tools',
+        'miners_bank_opinion',
+        'miner_fund_priorities',
+        'miner_fund_priorities_other',
+        'monthly_output',
     ];
 
     protected $casts = [
@@ -45,6 +53,7 @@ class StakeholderSubmission extends Model
         'environment_focus' => 'array',
         'reform_roles' => 'array',
         'impact_reforms' => 'array',
+        'miner_fund_priorities' => 'array',
     ];
 
     

@@ -57,20 +57,22 @@ class Government extends Component
     public $otherMineralType = '';
     
     public $operationTypes = [
-        'individualMiners' => 0,
+        'individual_miners' => 0,
         'cooperatives' => 0,
-        'informalGroups' => 0,
-        'jointVentures' => 0,
-        'largeScalePartnerships' => 0
+        'informal_groups' => 0,
+        'joint_ventures' => 0,
+        'large_scale_partnerships' => 0
     ];
     
+    
     public $toolsUsed = [
-        'manualTools' => false,
-        'poweredCrushers' => false,
-        'ballMills' => false,
+        'manual_tools' => false,
+        'powered_crushers' => false,
+        'ball_mills' => false,
         'mercury' => false,
         'cyanide' => false
     ];
+    
     
     public $safetyEquipmentUsed = 'rarely'; // yes, no, rarely
     
@@ -115,9 +117,24 @@ class Government extends Component
     ];
 
     // Gender & Youth Participation
-    public $womenOrganized = 'no'; // yes, informal, no
     public $womenGroups = 0;
     
+
+    public $policyFeedback = [
+        'legalSupport' => '',
+        'supportServices' => [
+            'accessCredit' => false,
+            'technicalTraining' => false,
+            'legalSupport' => false,
+            'marketLinkage' => false,
+            'other' => '',
+        ],
+        'reinvestmentIdeas' => '',
+        'lawFavorable' => '',
+        'lawChanges' => '',
+    ];
+
+
     public $womenBarriers = [
         'landAccess' => false,
         'licensingRestrictions' => false,
@@ -222,19 +239,16 @@ class Government extends Component
 
 // Operation Types
 foreach ($this->operationTypes as $type => $val) {
-    $snakeKey = preg_replace('/([a-z])([A-Z])/', '$1_$2', "operation_$type");
-    $snakeKey = strtolower($snakeKey);
-    $snakeKey = preg_replace('/_+/', '_', $snakeKey);
-    $data[$snakeKey] = $val;
+    // Ensure keys are like 'individual_miners', 'informal_groups', etc.
+    $data["operation_{$type}"] = $val;
 }
+
 
 // Tools Used
 foreach ($this->toolsUsed as $tool => $val) {
-    $snakeKey = preg_replace('/([a-z])([A-Z])/', '$1_$2', "$tool");
-    $snakeKey = strtolower($snakeKey);
-    $snakeKey = preg_replace('/_+/', '_', $snakeKey);
-    $data[$snakeKey] = $val;
+    $data["tool_{$tool}"] = $val;
 }
+
 
 // Support Services
 foreach ($this->supportServices as $service => $val) {
@@ -293,8 +307,22 @@ foreach ($this->supportServices as $service => $val) {
     $data['env_sites_monitored'] = $this->environmentalMonitoring['monitored'] ?? 0;
     $data['env_inspection_frequency'] = $this->environmentalMonitoring['frequency'] ?? 'none';
 
+// Section I: Policy Feedback
+
+    $data['policy_legal_support'] = $this->policyFeedback['legalSupport'];
+$data['policy_support_credit'] = $this->policyFeedback['supportServices']['accessCredit'];
+$data['policy_support_training'] = $this->policyFeedback['supportServices']['technicalTraining'];
+$data['policy_support_legal'] = $this->policyFeedback['supportServices']['legalSupport'];
+$data['policy_support_market'] = $this->policyFeedback['supportServices']['marketLinkage'];
+$data['policy_support_other'] = $this->policyFeedback['supportServices']['other'];
+$data['policy_reinvestment_ideas'] = $this->policyFeedback['reinvestmentIdeas'];
+$data['policy_law_favorable'] = $this->policyFeedback['lawFavorable'];
+$data['policy_law_changes'] = $this->policyFeedback['lawChanges'];
+
+
+
     // Save to DB
-   // GovernmentData::create($data);
+    GovernmentData::create($data);
 
     session()->flash('message', 'Form submitted successfully!');
     $this->reset();
