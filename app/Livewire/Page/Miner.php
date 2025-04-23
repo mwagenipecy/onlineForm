@@ -35,6 +35,9 @@ class Miner extends Component
         'disabilityDetail' => '',
     ];
 
+    public $monthlyOutput;
+
+
     // SECTION C: Mining Activity
     public $miningActivity = [
         'nature' => [],
@@ -126,6 +129,30 @@ class Miner extends Component
         'enumeratorNotes' => '',
     ];
 
+
+    // SECTION J: Market & Operations
+public $market = [
+    'sellChannels' => [],
+    'equipmentSupplier' => '',
+    'equipmentOwnership' => '',
+    'monthlyOutputKg' => '',
+];
+
+// SECTION K: Finance & Inclusion
+public $inclusion = [
+    'receivesBankPayment' => '',
+    'noBankReason' => '',
+    'capitalSources' => [],
+];
+
+// SECTION L: Geological Knowledge
+public $geology = [
+    'discoveryMethod' => '',
+    'assessmentMethods' => [],
+];
+
+
+
     public function save()
     {
         // You can customize validation as needed
@@ -163,6 +190,12 @@ class Miner extends Component
             'community' => $this->community,
             'policy' => $this->policy,
             'reform_feedback' => $this->reformFeedback,
+
+            'market' => $this->market,
+            'inclusion' => $this->inclusion,
+            'geology' => $this->geology,
+
+            
         ]);
 
         session()->flash('success', 'Form submitted successfully!');

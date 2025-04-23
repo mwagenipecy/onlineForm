@@ -21,6 +21,9 @@ class MinerProfile extends Model
         'community',
         'policy',
         'reform_feedback',
+        'market',       // ← NEW
+        'inclusion',    // ← NEW
+        'geology',
     ];
 
     protected $casts = [
@@ -33,6 +36,9 @@ class MinerProfile extends Model
         'community' => 'array',
         'policy' => 'array',
         'reform_feedback' => 'array',
+        'market' => 'array',       // ← NEW
+    'inclusion' => 'array',    // ← NEW
+    'geology' => 'array', 
     ];
 
     

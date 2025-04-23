@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        $this->call(FinancialInstitutionSeeder::class);
+      //  $this->call(FinancialInstitutionSeeder::class);
+        $this->call(MinerProfileSeeder::class);
 
     }
 }

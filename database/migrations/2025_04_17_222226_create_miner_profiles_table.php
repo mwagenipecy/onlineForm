@@ -30,6 +30,11 @@ return new class extends Migration
             $table->json('policy');
             $table->json('reform_feedback');
 
+
+            $table->json('market')->nullable();        // ← NEW
+            $table->json('inclusion')->nullable();     // ← NEW
+            $table->json('geology')->nullable();   
+            
             
             $table->timestamps();
         });

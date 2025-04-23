@@ -257,7 +257,7 @@
             </div>
             <div>
                 <label for="householdExpenditure" class="block text-sm font-medium text-gray-700">
-                    {{ session('locale') == 'sw' ? 'Matumizi ya Kila Mwezi ya Kaya (TZS)' : 'Average Monthly Household Expenditure (TZS)' }}
+                    {{ session('locale') == 'sw' ? 'Matumizi ya Kila Mwezi ya Kaya (TZS)' : 'Average monthly mining operation costs (TZS)' }}
                 </label>
                 <input id="householdExpenditure" wire:model="profile.householdExpenditure" type="number"
                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
@@ -438,7 +438,7 @@
                 {{ session('locale') == 'sw' ? 'Zana Zinazotumika' : 'Main Tools Used' }}
             </label>
             <div class="flex flex-wrap gap-4">
-                @foreach (['Manual', 'Powered machinery', 'Ball mill', 'Crushing plant', 'Mercury', 'Cyanide'] as $tool)
+                @foreach (['Manual','Trucks','excavators','local transport (e.g. donkeys, wheelbarrows)', 'Powered machinery', 'Ball mill', 'Crushing plant', 'Mercury', 'Cyanide'] as $tool)
                     <label class="flex items-center space-x-2">
                         <input type="checkbox" wire:model="miningActivity.tools.{{ Str::slug($tool) }}" value="{{ $tool }}"
                                class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
@@ -476,6 +476,19 @@
                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                 </div>
             </div>
+
+            <!-- Question: Average Monthly Production Output -->
+<div>
+    <label for="monthlyOutput" class="block text-sm font-medium text-gray-700">
+        {{ session('locale') == 'sw' 
+            ? 'Ni uzalishaji wako wa wastani wa kila mwezi ni kiasi gani (kwa tani au mawe)?' 
+            : 'What is your average monthly production output (e.g., in tons or ores)?' }}
+    </label>
+    <input type="text" id="monthlyOutput" wire:model="monthlyOutput" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+</div>
+
+
+
         </div>
     </div>
 </div>
@@ -1522,6 +1535,151 @@
 
 
     </div>
+</div>
+
+
+
+
+
+<div class="bg-white shadow rounded-lg p-6 mt-8">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">
+    {{ session('locale') == 'sw' ? 'SEHEMU J: SOKO NA UENDESHAJI' : 'SECTION J: MARKET AND OPERATIONS' }}
+</h3>
+
+<div class="space-y-6">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Unauzaje madini yako?' : 'Where do you usually sell your minerals?' }}
+        </label>
+        <div class="flex flex-wrap gap-4">
+            @foreach (['Local mineral market', 'Licensed broker', 'Export agent', 'Informal middlemen'] as $option)
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" wire:model="market.sellChannels.{{ Str::slug($option) }}" value="{{ $option }}"
+                           class="text-blue-600 border-gray-300 rounded">
+                    <span>{{ $option }}</span>
+                </label>
+            @endforeach
+            <input type="text" wire:model="market.sellChannels.other"
+                   class="mt-2 block w-1/2 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                   placeholder="{{ session('locale') == 'sw' ? 'Nyingine' : 'Other (please specify)' }}">
+        </div>
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Nani anakupatia vifaa vya kazi?' : 'Who supplies your operational equipment?' }}
+        </label>
+        <input type="text" wire:model="market.equipmentSupplier"
+               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Je, unamiliki au unakodisha vifaa?' : 'Do you lease or own your mining equipment?' }}
+        </label>
+        <div class="flex gap-6">
+            @foreach (['Lease', 'Own', 'Both'] as $option)
+                <label class="flex items-center space-x-2">
+                    <input type="radio" wire:model="market.equipmentOwnership" value="{{ $option }}"
+                           class="text-blue-600 border-gray-300">
+                    <span>{{ $option }}</span>
+                </label>
+            @endforeach
+        </div>
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Uzalishaji wa kila mwezi (Kgs)?' : 'Average monthly production output (Kgs)?' }}
+        </label>
+        <input type="number" wire:model="market.monthlyOutputKg"
+               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm">
+    </div>
+</div>
+</div>
+
+
+<div class="bg-white shadow rounded-lg p-6 mt-8">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">
+    {{ session('locale') == 'sw' ? 'SEHEMU K: FEDHA NA UJUMUISHAJI' : 'SECTION K: FINANCE AND INCLUSION' }}
+</h3>
+
+<div class="space-y-6">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Je, unapokea malipo kupitia akaunti ya benki?' : 'Do you receive payments through a bank account?' }}
+        </label>
+        <div class="flex gap-6">
+            @foreach (['Yes', 'No'] as $value)
+                <label class="flex items-center space-x-2">
+                    <input type="radio" wire:model="inclusion.receivesBankPayment" value="{{ strtolower($value) }}"
+                           class="text-blue-600 border-gray-300">
+                    <span>{{ $value }}</span>
+                </label>
+            @endforeach
+        </div>
+        @if ($inclusion['receivesBankPayment'] === 'no')
+        <input type="text" wire:model="inclusion.noBankReason"
+               class="mt-2 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm"
+               placeholder="{{ session('locale') == 'sw' ? 'Kwa nini hutumii akaunti ya benki?' : 'Why don’t you use a bank account?' }}">
+        @endif
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Vyanzo vikuu vya mtaji' : 'Main sources of capital' }}
+        </label>
+        <div class="flex flex-wrap gap-4">
+            @foreach (['Personal savings', 'Family or friends', 'SACCOs', 'Microfinance', 'Government fund'] as $source)
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" wire:model="inclusion.capitalSources.{{ Str::slug($source) }}" value="{{ $source }}"
+                           class="text-blue-600 border-gray-300 rounded">
+                    <span>{{ $source }}</span>
+                </label>
+            @endforeach
+            <input type="text" wire:model="inclusion.capitalSources.other"
+                   class="mt-2 block w-1/2 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                   placeholder="{{ session('locale') == 'sw' ? 'Nyingine' : 'Other (please specify)' }}">
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="bg-white shadow rounded-lg p-6 mt-8">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">
+    {{ session('locale') == 'sw' ? 'SEHEMU L: UFAHAMU WA KIIWA' : 'SECTION L: GEOLOGICAL KNOWLEDGE' }}
+</h3>
+
+<div class="space-y-6">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Unawezaje kujua kuwa eneo lina madini?' : 'How do you usually discover mineral deposits?' }}
+        </label>
+        <input type="text" wire:model="geology.discoveryMethod"
+               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">
+            {{ session('locale') == 'sw' ? 'Mbinu unazotumia kuthibitisha uwepo wa madini' : 'Which methods do you use to confirm mineral presence?' }}
+        </label>
+        <div class="flex flex-wrap gap-4">
+            @foreach (['Traditional knowledge', 'Trial digging', 'Testing by geologist', 'Metal detector'] as $method)
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" wire:model="geology.assessmentMethods.{{ Str::slug($method) }}" value="{{ $method }}"
+                           class="text-blue-600 border-gray-300 rounded">
+                    <span>{{ $method }}</span>
+                </label>
+            @endforeach
+            <input type="text" wire:model="geology.assessmentMethods.other"
+                   class="mt-2 block w-1/2 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                   placeholder="{{ session('locale') == 'sw' ? 'Nyingine' : 'Other (please specify)' }}">
+        </div>
+    </div>
+</div>
 </div>
 
 
