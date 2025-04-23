@@ -6,9 +6,7 @@
 
 
 
-
-
-<section class="text-center mb-12  mt-6">
+<section class="text-center mb-12 mt-6">
     <h2 class="text-3xl md:text-4xl font-bold mb-6">
         @if(session('locale') == 'sw')
             Karibu kwenye Jukwaa la Ukusanyaji Data
@@ -25,7 +23,7 @@
     </p>
 </section>
 
-<section class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
     <!-- Government Data -->
     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
         <div class="bg-blue-600 h-2"></div>
@@ -96,6 +94,41 @@
         </div>
     </div>
 
+    <!-- Financial Institution Collection -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="bg-amber-600 h-2"></div>
+        <div class="p-6">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3">
+                @if(session('locale') == 'sw')
+                    Ukusanyaji Data ya Taasisi za Kifedha
+                @else
+                    Financial Institution Data
+                @endif
+            </h3>
+            <p class="text-gray-600 mb-6 text-center">
+                @if(session('locale') == 'sw')
+                    Shiriki data kuhusu taasisi za kifedha.
+                @else
+                    Share data about financial institutions.
+                @endif
+            </p>
+            <div class="text-center">
+                <a href="{{ route('financial.institution') }}" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-6 rounded-md transition">
+                    @if(session('locale') == 'sw')
+                        Anza
+                    @else
+                        Start
+                    @endif
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Supplementary Collection -->
     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
         <div class="bg-purple-600 h-2"></div>
@@ -131,6 +164,7 @@
         </div>
     </div>
 </section>
+
 
 <div class="h-[50vh]">
 </div>

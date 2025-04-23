@@ -106,9 +106,19 @@ Route::get('contact',function(){
 })->name('contact');
 
 
+Route::get('financial/institution',function(){
+    return view('pages.finance');
+
+})->name('financial.institution');
+
+
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('locale.switch');
+
+
+
+
 
