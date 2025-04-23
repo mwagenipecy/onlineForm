@@ -16,6 +16,7 @@ class SupplimentaryForm extends Component
     public $services = [];
     public $targetGroups = [];
     public $serviceArea;
+    public $digitalMiningPlatformAwareness;
 
     // SECTION C
     public $asmInfluenceLevel;

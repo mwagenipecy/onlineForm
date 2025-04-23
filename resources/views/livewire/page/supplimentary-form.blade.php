@@ -115,7 +115,7 @@
         @foreach([
             'businessLoans' => ['en' => 'Business Loans', 'sw' => 'Mikopo ya Biashara'],
             'grantSupport' => ['en' => 'Grant Support', 'sw' => 'Msaada wa Ruzuku'],
-            'legalAid' => ['en' => 'Legal Aid or Compliance Training', 'sw' => 'Msaada wa Kisheria au Mafunzo ya Uzingatiaji'],
+            'legalAid' => ['en' => 'Legal Support or Compliance Training', 'sw' => 'Msaada wa Kisheria au Mafunzo ya Uzingatiaji'],
             'environmentalServices' => ['en' => 'Environmental Services', 'sw' => 'Huduma za Mazingira'],
             'equipmentFinancing' => ['en' => 'Equipment Financing', 'sw' => 'Ufadhili wa Vifaa'],
             'marketAccess' => ['en' => 'Market Access or Trading', 'sw' => 'Upatikanaji wa Masoko au Biashara'],
@@ -797,7 +797,126 @@
         </div>
 
     </div>
+
+
+
+
+
+
 </div>
+
+
+
+
+
+
+    <!-- Section I: Digital Tools and Strategic Proposals -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-8">
+    <div class="px-4 py-5 border-b border-gray-200 sm:px-6 bg-blue-50">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+            {{ session('locale') == 'sw' 
+                ? 'SEHEMU I: ZANA ZA KIDIJITALI NA MAPENDEKEZO YA KIMKAKATI' 
+                : 'SECTION I: DIGITAL TOOLS AND STRATEGIC PROPOSALS' }}
+        </h3>
+    </div>
+    <div class="px-4 py-5 sm:p-6 space-y-6">
+
+        <!-- Question 1 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                {{ session('locale') == 'sw' 
+                    ? '1. Je, unafahamu majukwaa yoyote ya kidijitali yanayohusiana na madini (mfano: leseni, mauzo, upatikanaji wa taarifa)?' 
+                    : '1. Are you aware of any digital platforms related to mining (e.g., licensing, selling, information access)?' }}
+            </label>
+            <div class="flex items-center space-x-6">
+                <label class="flex items-center">
+                    <input type="radio" wire:model="digitalMiningPlatformAwareness" value="yes" class="h-4 w-4 text-blue-600 border-gray-300">
+                    <span class="ml-2 text-sm text-gray-700">{{ session('locale') == 'sw' ? 'Ndiyo' : 'Yes' }}</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" wire:model="digitalMiningPlatformAwareness" value="no" class="h-4 w-4 text-blue-600 border-gray-300">
+                    <span class="ml-2 text-sm text-gray-700">{{ session('locale') == 'sw' ? 'Hapana' : 'No' }}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        @if ($digitalMiningPlatformAwareness === 'yes')
+        <div>
+            <label for="platformsUsed" class="block text-sm font-medium text-gray-700">
+                {{ session('locale') == 'sw' ? '2. Kama ndiyo, ni majukwaa yapi umetumia?' : '2. If yes, which platforms have you used?' }}
+            </label>
+            <input type="text" id="platformsUsed" wire:model="platformsUsed" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+        @endif
+
+        <!-- Question 3 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                {{ session('locale') == 'sw' 
+                    ? '3. Je, unatumia programu za simu, huduma za SMS au zana za mtandaoni kusaidia shughuli zako za madini?' 
+                    : '3. Do you use mobile apps, SMS services, or online tools to support your mining activities?' }}
+            </label>
+            <div class="flex items-center space-x-6">
+                <label class="flex items-center">
+                    <input type="radio" wire:model="usesMobileTools" value="yes" class="h-4 w-4 text-blue-600 border-gray-300">
+                    <span class="ml-2 text-sm text-gray-700">{{ session('locale') == 'sw' ? 'Ndiyo' : 'Yes' }}</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" wire:model="usesMobileTools" value="no" class="h-4 w-4 text-blue-600 border-gray-300">
+                    <span class="ml-2 text-sm text-gray-700">{{ session('locale') == 'sw' ? 'Hapana' : 'No' }}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div>
+            <label for="minersBankOpinion" class="block text-sm font-medium text-gray-700">
+                {{ session('locale') == 'sw' 
+                    ? '4. Maoni yako kuhusu kuanzishwa kwa Benki ya Wachimbaji au Mfuko wa Taifa wa Madini ni yapi?' 
+                    : '4. What is your opinion on the creation of a Miners’ Bank or Sovereign Fund?' }}
+            </label>
+            <textarea id="minersBankOpinion" wire:model="minersBankOpinion" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+        </div>
+
+        <!-- Question 5 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+                {{ session('locale') == 'sw' 
+                    ? '5. Ni nini kifanywe kuwa kipaumbele cha juu cha Mfuko wa Wachimbaji au Benki?' 
+                    : '5. Which of the following should be a top priority of a Miners’ Fund or Bank?' }}
+            </label>
+            <div class="space-y-2">
+                @foreach([
+                    'credit' => session('locale') == 'sw' ? 'Upatikanaji wa Mikopo' : 'Credit access',
+                    'leasing' => session('locale') == 'sw' ? 'Upangishaji wa Vifaa' : 'Equipment leasing',
+                    'infrastructure' => session('locale') == 'sw' ? 'Miundombinu (barabara, umeme, nk.)' : 'Infrastructure (roads, power, etc.)',
+                    'training' => session('locale') == 'sw' ? 'Mafunzo na Vyeti vya Ufundi' : 'Technical training and certification',
+                    'other' => session('locale') == 'sw' ? 'Nyingine (tafadhali taja)' : 'Other (please specify)'
+                ] as $key => $label)
+                <div class="flex items-center">
+                    <input type="checkbox" id="minerFundPriority_{{ $key }}" wire:model="minerFundPriorities.{{ $key }}" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                    <label for="minerFundPriority_{{ $key }}" class="ml-2 block text-sm text-gray-700">{{ $label }}</label>
+                </div>
+                @endforeach
+
+                @if (!empty($minerFundPriorities['other']))
+                <input type="text" wire:model="minerFundPrioritiesOther" placeholder="{{ session('locale') == 'sw' ? 'Tafadhali taja' : 'Please specify' }}" class="mt-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                @endif
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
